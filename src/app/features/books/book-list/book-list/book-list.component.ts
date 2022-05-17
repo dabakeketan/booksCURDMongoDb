@@ -44,7 +44,7 @@ export class BookListComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngAfterViewInit() {
-  //  this.dataSource.paginator = this.paginator;
+    //  this.dataSource.paginator = this.paginator;
   }
 
   getBooks() {
@@ -59,7 +59,9 @@ export class BookListComponent implements OnInit, OnDestroy, AfterViewInit {
 
   deleteBook(book) {
     console.log(book);
-    this.booksService.deleteBook(book);
+    if (confirm('Are you sure to delete entry for book ' + book.title)) {
+      this.booksService.deleteBook(book);
+    }
   }
 
   ngOnDestroy() {
